@@ -1,0 +1,32 @@
+{
+    "fmt": {
+        "exclude": ["**/*.md"],
+        "lineWidth": 100,
+        "indentWidth": 4,
+        "useTabs": false
+    },
+
+    "exclude": [
+        "_npm",
+        "npm"
+    ],
+
+    "tasks": {
+        "new": "deno run -A ./eng/tasks/create-mod.ts",
+        "test": "deno test -A --unstable-ffi",
+        "test:node": "deno test -A --unstable-ffi --env-file='runtime.env' ",
+        "doc:mod": "deno run -A ./eng/tasks/doc-mod.ts",
+        "coverage": "deno test ./lib/** --coverage=.artifacts/code-coverage -A --unstable-ffi",
+        "lcov": "deno coverage .artifacts/code-coverage --lcov > .artifacts/code-coverage.lcov",
+        "prep": "deno fmt ./lib/** && deno lint ./lib/**",
+        "publish:test": "deno publish --dry-run --allow-dirty"
+    },
+
+    "workspace": [
+        
+    ],
+
+    "imports": {
+
+    }
+}
